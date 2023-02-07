@@ -16,6 +16,7 @@ public class Cliente {
 		this.direccion = direccion;
 		this.localidad = localidad;
 	}
+	
 	public Cliente() {
 		
 	}
