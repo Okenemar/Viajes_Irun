@@ -14,4 +14,12 @@ public class Visor {
 		System.out.println(cliente);
 	}
 	
+	public static void mostrarHoteles(ArrayList<Hotel> hotel) {
+		for (Hotel hotel2 : hotel) {
+			System.out.println(hotel2);
+		}
+	}
+	public static void mostrarHotel(Hotel hotel) {
+		System.out.println(hotel);
+	}
 }

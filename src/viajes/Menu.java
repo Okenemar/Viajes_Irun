@@ -23,7 +23,9 @@ public class Menu {
 	
 	/*-------------MENU HOTELES-------------*/
 
-	public static final int REGISTRAR_HOTEL = 1;
+	public static final int CREAR_HOTEL = 1;
+	public static final int ELIMINAR_HOTEL = 2;
+	public static final int MOSTRAR_HOTEL = 3;
 	
 	static void mostraMenuPrincipal() {
 		System.out.println("-----MENU-----");
@@ -50,7 +52,9 @@ public class Menu {
 	
 	static void mostrarMenuHoteles() {
 		System.out.println("-----MENU-----");
-		System.out.println(REGISTRAR_HOTEL + ". Registrar hotel");
+		System.out.println(CREAR_HOTEL + ". Registrar hotel");
+		System.out.println(ELIMINAR_HOTEL + ". Eliminar hotel");
+		System.out.println(MOSTRAR_HOTEL + ". Mostrar hoteles");
 		System.out.println(SALIR + ". Salir");
 	}
 	}
