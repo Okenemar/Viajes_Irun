@@ -52,7 +52,7 @@ public class Reserva {
 	}
 	@Override
 	public String toString() {
-		return "Reserva [id=" + id + "id_habitacion=" + id_habitacion + ", dni=" + dni + ", desde=" + desde + ", hasta=" + hasta
+		return "Reserva [id=" + id + ", id_habitacion=" + id_habitacion + ", dni=" + dni + ", desde=" + desde + ", hasta=" + hasta
 				+ "]";
 	}
 	

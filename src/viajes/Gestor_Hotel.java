@@ -20,7 +20,7 @@ public class Gestor_Hotel {
 			
 			hotel = Formularios.pedirDatosHotel(scan);
 			gestorBBDD.conectar();
-			gestorBBDD.insertarHotel(hotel);
+			gestorBBDD.insertarHotel(hotel, scan);
 			gestorBBDD.cerrar();
 			
 			break;

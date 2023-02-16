@@ -18,12 +18,13 @@ public class Gestor_Reserva {
 		
 		switch (opcion) {
 		case Menu.CREAR_RESERVA:
-			
-			reserva = Formularios.pedirDatosReserva(scan);
 			gestorBBDD.conectar();
-			gestorBBDD.insertarReserva(reserva);
+			int id_hotel=Formularios.pediridHotel(scan);
+			gestorBBDD.insertarReserva(id_hotel,scan);			
+			
 			gestorBBDD.cerrar();
 			
+
 			break;
 
 		case Menu.ELIMINAR_RESERVA:
@@ -34,6 +35,11 @@ public class Gestor_Reserva {
 			gestorBBDD.cerrar();
 			
 			break;
+		
+		case Menu.VER_RESERVA:
+			gestorBBDD.conectar();
+			Visor.mostrarReservas(gestorBBDD.mostrarReserva());
+			gestorBBDD.cerrar();
 		}
 	}while (opcion!=Menu.SALIR); 
 	}

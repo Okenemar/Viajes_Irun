@@ -51,6 +51,7 @@ public class Formularios extends GestorBBDD{
 		System.out.println("Introduce la compañia del hotel");
 		hotel.setCompania(scan.nextLine());
 		
+		
 		return hotel;
 	}
 	
@@ -67,9 +68,11 @@ public class Formularios extends GestorBBDD{
 	public static Habitacion pedirDatosHabitacion(Scanner scan) {
 		Habitacion habitacion = new Habitacion();
 		
+		System.out.println("Introduce el id de la habitación");
+		habitacion.setId(Integer.parseInt(scan.nextLine()));
 		System.out.println("Introduce el id del hotel al que pertenece");
 		habitacion.setId_hotel(Integer.parseInt(scan.nextLine())); 
-		System.out.println("Introduce el numero del hotel");
+		System.out.println("Introduce el numero de la habitación");
 		habitacion.setNumero(scan.nextLine());
 		System.out.println("Introduce una descripción de la habitación");
 		habitacion.setDescripcion(scan.nextLine());
@@ -91,7 +94,7 @@ public class Formularios extends GestorBBDD{
 			Reserva reserva = new Reserva();
 			
 			SimpleDateFormat fechaDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-		
+			
 			System.out.println("Introduce el id de la habitacion");
 			reserva.setId_habitacion(Integer.parseInt(scan.nextLine())); 
 			System.out.println("Introduce el dni del cliente que ha realizado la reserva");
