@@ -18,8 +18,16 @@ public class Gestor_Reserva {
 		
 		switch (opcion) {
 		case Menu.CREAR_RESERVA:
+			String dni;
 			gestorBBDD.conectar();
+
+			do {
+				dni = Formularios.pedirdniCliente(scan);
+				
+			}while(!gestorBBDD.dniExiste(dni));
+			
 			int id_hotel=Formularios.pediridHotel(scan);
+			Visor.mostrarHabitaciones(gestorBBDD.mostrarHabitacion());
 			gestorBBDD.insertarReserva(id_hotel,scan);			
 			
 			gestorBBDD.cerrar();

@@ -38,7 +38,21 @@ public class GestorBBDD extends Conector {
 	}
 	
 	public Cliente getCliente (String dni) {
+		
+		String sentenciaSelect = "SELECT * FROM clientes WHERE dni = ?";
+		try {
+			Statement st = con.createStatement();
+			Cliente cliente = new Cliente();
+			
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 		return null;
+		
+		
 	}
 	
 	public ArrayList<Cliente> mostrarClientes() throws SQLException{
@@ -59,6 +73,34 @@ public class GestorBBDD extends Conector {
 			
 		}
 		return clientes;
+	}
+	
+//	public void dniExiste(Scanner scan, Cliente cliente, int id_hotel) throws SQLException, ParseException {
+//		GestorBBDD gestorBBDD = new GestorBBDD();
+//		String dni;
+//		Statement st = con.createStatement();
+//		String sentenciaSelect = "SELECT dni FROM clientes";
+//		st.executeQuery(sentenciaSelect);
+//		System.out.println("Introduce el dni");
+//		dni = scan.nextLine();
+//		do {
+//			
+//			gestorBBDD.insertarReserva(id_hotel,scan);			
+//
+//			
+//		} while (cliente.getDni().equals(dni));
+//	}
+	
+	public  boolean dniExiste(String dni)throws SQLException {
+		boolean existe = false;
+		
+		if (getCliente(dni).getDni().equals(dni)) {
+			existe = true;
+		}
+		else {
+			existe = false;
+		}
+		return existe;
 	}
 	
 	/*-------------------Hoteles-------------------*/
@@ -245,3 +287,20 @@ public class GestorBBDD extends Conector {
 		return reservas;
 	}
 }
+//sentencia="SELECT * FROM clientes WHERE dni=?";
+//Cliente cliente = new Cliente();
+//
+//pt=getCon().prepareStatement(sentencia);
+//pt.setString(1, dni);
+//
+//ResultSet result=pt.executeQuery();
+//result.next();
+//
+//cliente.setDni(result.getString("dni"));
+//cliente.setNombre(result.getString("nombre"));
+//cliente.setApellidos(result.getString("apellidos"));
+//cliente.setDireccion(result.getString("direccion"));
+//cliente.setLocalidad(result.getString("localidad"));
+//
+//return cliente;
+
