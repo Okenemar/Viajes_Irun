@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestorBBDD extends Conector {
+	
 	PreparedStatement preparedSt;
 	
 	/*-------------------Clientes-------------------*/

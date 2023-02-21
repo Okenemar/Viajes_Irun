@@ -34,7 +34,7 @@ public class Menu {
 	public static final int MOSTRAR_HABITACION = 3;
 	
 	
-	static void mostraMenuPrincipal() {
+	static void mostrarMenuPrincipal() {
 		System.out.println("-----MENU-----");
 		System.out.println(GESTIONAR_CLIENTES + ". Gestionar clientes");
 		System.out.println(GESTIONAR_RESERVAS + ". Gestionar reservas");
