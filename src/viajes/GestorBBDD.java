@@ -37,20 +37,24 @@ public class GestorBBDD extends Conector {
 		preparedSt.execute();
 	}
 	
-	public Cliente getCliente (String dni) {
-		
+	public Cliente getCliente (String dni)throws SQLException {
+		Statement st = con.createStatement();
+
 		String sentenciaSelect = "SELECT * FROM clientes WHERE dni = ?";
-		try {
-			Statement st = con.createStatement();
+		ResultSet resultado = st.executeQuery(sentenciaSelect);
+
 			Cliente cliente = new Cliente();
+			preparedSt.setString(1, cliente.getDni());
+			preparedSt.setString(2, cliente.getNombre());
+			preparedSt.setString(3, cliente.getApellidos());
+			preparedSt.setString(4, cliente.getDireccion());
+			preparedSt.setString(5, cliente.getLocalidad());
+			
+			preparedSt.execute();
 			
 			
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		return null;
+		
+		return cliente;
 		
 		
 	}
@@ -122,7 +126,7 @@ public class GestorBBDD extends Conector {
 	public void insertarHotel(Hotel hotel, Scanner scan) throws SQLException {
 		preparedSt = con.prepareStatement("INSERT INTO hoteles (cif,nombre,gerente,estrellas,compania) VALUES (?,?,?,?,?)");
 		String respuesta = "";
-
+		
 		preparedSt.setString(1, hotel.getCif());
 		preparedSt.setString(2, hotel.getNombre());
 		preparedSt.setString(3, hotel.getGerente());
@@ -285,6 +289,52 @@ public class GestorBBDD extends Conector {
 			reservas.add(reserva);
 		}
 		return reservas;
+	}
+
+	public ArrayList<Habitacion> getHabitacion(int id_hotel) throws SQLException{
+
+		
+		
+		String sentenciaSelect = "SELECT * FROM habitaciones WHERE id_hotel = ?";
+		PreparedStatement pt = con.prepareStatement(sentenciaSelect);
+		
+		pt.setInt(1, id_hotel);
+
+		ResultSet resultado = pt.executeQuery();
+		
+		ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+		while (resultado.next()) {
+			Habitacion habitacion = new Habitacion();
+			habitacion.setId(resultado.getInt("id"));
+			habitacion.setId_hotel(resultado.getInt("id_hotel"));
+			habitacion.setNumero(resultado.getString("numero"));
+			habitacion.setDescripcion(resultado.getString("descripcion"));
+			habitacion.setPrecio(resultado.getDouble("precio"));			
+			
+			habitaciones.add(habitacion);
+		}
+		return habitaciones;
+	}
+	public Hotel getHotel(String nombreHotel) throws SQLException {
+		Statement st = con.createStatement();
+
+		String sentenciaSelect = "SELECT * FROM hoteles WHERE nombre = ?";
+		Hotel hotel = new Hotel();
+		
+		st = getCon().prepareStatement(sentenciaSelect);
+		preparedSt.setString(1, nombreHotel);
+		
+		ResultSet resultado = st.executeQuery(sentenciaSelect);
+		resultado.next();
+		
+		hotel.setId(resultado.getInt("id"));
+		hotel.setCif(resultado.getString("cif"));
+		hotel.setNombre(resultado.getString("nombre"));
+		hotel.setGerente(resultado.getString("gerente"));
+		hotel.setEstrellas(resultado.getInt("estrellas"));
+		hotel.setCompania(resultado.getString("compania"));
+		
+		return hotel;
 	}
 }
 //sentencia="SELECT * FROM clientes WHERE dni=?";
